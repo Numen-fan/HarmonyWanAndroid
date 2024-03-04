@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "nav_home",
+      "value": "主页"
+    },
+    {
+      "name": "nav_wenda",
+      "value": "问答"
+    },
+    {
+      "name": "nav_me",
+      "value": "我的"
     }
   ]
 }
