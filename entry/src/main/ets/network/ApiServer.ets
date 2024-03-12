@@ -10,7 +10,6 @@ async function requestSync<T>(path: String, method: http.RequestMethod, extraDat
       throw new Error("path must start with '/'")
     }
     let url = BASE_URL + path
-    // let uri = parseUri(url);
     let header: HashMap<string, string> = new HashMap()
     if (method === http.RequestMethod.POST) {
       header["Content-Type"] = "application/x-www-form-urlencoded"
@@ -30,8 +29,7 @@ async function requestSync<T>(path: String, method: http.RequestMethod, extraDat
       (err, resp) => {
         let res = new ResponseData<T>()
         if (!err && resp.responseCode == 200) {
-          let result = resp.result as string
-          res = JSON.parse(result)
+          res = resp.result as ResponseData<T>
         } else {
           res.errorCode = resp?.responseCode ?? -1
           res.errorMsg = err?.message

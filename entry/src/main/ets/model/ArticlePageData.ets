@@ -8,8 +8,7 @@ export default class ArticlePageData {
   total: number = 0
 }
 
-
-class Article {
+export class Article {
   adminAdd: boolean = false
   apkLink?: string
   audit?: number
@@ -41,7 +40,7 @@ class Article {
   tags?: Array<Tag>
 }
 
-class Tag {
+export class Tag {
   name?: string
   url?: string
 }

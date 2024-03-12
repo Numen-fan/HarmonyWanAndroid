@@ -1,4 +1,4 @@
-import HomeItemBean from '../beans/ArticlePageData'
+import HomeItemBean from '../model/ArticlePageData'
 
 enum PAGE_STATE {LOADING, FILL, EMPTY, INIT}
 

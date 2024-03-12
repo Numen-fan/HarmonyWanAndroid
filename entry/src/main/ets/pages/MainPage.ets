@@ -1,6 +1,6 @@
-import Home from '../views/Home';
-import Me from '../views/Me';
-import WenDa from '../views/WenDa';
+import Home from './Home';
+import Me from './Me';
+import WenDa from './WenDa';
 
 @Entry
 @Component
