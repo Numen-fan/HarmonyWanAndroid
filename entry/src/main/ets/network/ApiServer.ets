@@ -4,7 +4,7 @@ import { HashMap } from '@kit.ArkTS'
 
 const BASE_URL = 'https://www.wanandroid.com'
 
-async function requestSync<T>(path: String, method: http.RequestMethod, extraData?: Object): Promise<ResponseData<T>> {
+async function requestSync<T>(path: String, method: http.RequestMethod = http.RequestMethod.GET, extraData?: Object): Promise<ResponseData<T>> {
   return new Promise<ResponseData<T>>((resolve, reject) => {
     if (!path.startsWith('/')) {
       throw new Error("path must start with '/'")

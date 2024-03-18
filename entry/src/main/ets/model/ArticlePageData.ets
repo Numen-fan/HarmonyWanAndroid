@@ -1,6 +1,6 @@
 export default class ArticlePageData {
   curPage: number = 0
-  datas?: Array<Article>
+  datas: Array<Article> = []
   offset: number = 0
   over: boolean = false
   pageCount: number = 0
@@ -37,10 +37,27 @@ export class Article {
   userId = 0
   visible = 0
   zan = 0
-  tags?: Array<Tag>
+  tags: Array<Tag> = []
 }
 
 export class Tag {
-  name?: string
-  url?: string
+  name: string = ''
+  url: string = ''
+}
+
+export function getTagColor(tag: Tag): Resource {
+  switch (tag.name) {
+    case "置顶":
+      return $r("app.color.red")
+    case "本站发布":
+      return $r("app.color.blue")
+    case "问答":
+      return $r("app.color.cyan")
+    case "公众号":
+      return $r("app.color.main")
+    case "项目":
+      return $r("app.color.teal")
+    default:
+      return $r("app.color.main")
+  }
 }
