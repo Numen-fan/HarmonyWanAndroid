@@ -1,4 +1,4 @@
-import { MaterialProgressBar } from '@ohos/materialprogressbar'
+import { MaterialProgressBar, MaterialProgressStyle } from '@ohos/materialprogressbar'
 
 export enum LoadState {
   LOADING,
@@ -21,7 +21,7 @@ export struct PageLoadingWidget {
         MaterialProgressBar({
           modelBuild: {
             color: $r('app.color.main'),
-            bgColor: $r("app.color.divider"),
+            bgColor: $r("app.color.navi_tab_unselect"),
             indeterminate: true,
             strokeWidth: 4
           }
@@ -31,14 +31,54 @@ export struct PageLoadingWidget {
       } else if (this.loadState == LoadState.SUCCESS) {
         this.content()
         if (this.showLoading) {
-          
+          Stack() {
+            MaterialProgressBar({
+              style: MaterialProgressStyle.MaterialCircular,
+              modelBuild: {
+                color: $r("app.color.start_window_background"),
+                bgColor: Color.Transparent,
+                indeterminate: true,
+                strokeWidth: 4,
+              }
+            })
+              .margin({ left: 16, top: 16 })
+              .align(Alignment.Center)
+              .width(100)
+              .height(100)
+              .align(Alignment.Center)
+              .backgroundColor($r("app.color.translucent_black_50"))
+              .borderRadius(8)
+          }.width('100%')
+          .height('100%')
         }
-
-      } else if (this.loadState == LoadState.FAIL) {
-
+      }
+      else if (this.loadState == LoadState.FAIL) {
+        Stack() {
+          Text("加载失败，点击重试")
+            .align(Alignment.Center)
+        }
+        .width('100%')
+        .height('100%')
+        .onClick((event) => {
+          if (this.onReload !== undefined) {
+            this.onReload();
+          }
+        })
       } else {
-
+        Stack() {
+          Text("这里什么都没有")
+            .align(Alignment.Center)
+        }
+        .width('100%')
+        .height('100%')
+        .onClick(() => {
+          if (this.onReload !== undefined) {
+            this.onReload();
+          }
+        })
       }
     }
+    .width("100%")
+    .height('100%')
   }
 }
